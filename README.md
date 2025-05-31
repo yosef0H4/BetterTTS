@@ -66,9 +66,6 @@ An AutoHotkey v2 application that combines OCR (text capture from screen) with T
 **Text appears corrupted**
 - For non-English/Arabic languages: disable "Clean Text" in Settings menu
 
-**Poor voice quality**
-- Install natural voices or Natural Voice SAPI Adapter
-
 **OCR not working**
 - Ensure clear text selection and correct language pack installed
 
