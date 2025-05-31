@@ -25,7 +25,7 @@ An AutoHotkey v2 application that combines OCR (text capture from screen) with T
 1. **Install AutoHotkey v2** from [autohotkey.com](https://www.autohotkey.com/)
 2. **Download this project** and place `OCR.ahk` from [Descolada's repo](https://github.com/Descolada/OCR/) in the same folder
 3. **Add OCR languages**: Windows Settings → Time & Language → Language & region → Add language (with OCR feature)
-4. **Get natural voices** (optional): Windows Settings → Accessibility → Narrator → "Add natural voices"
+4. **Get natural voices** (optional): Windows Settings → Accessibility → Narrator → "Add natural voices" -> add them using [Natural Voice SAPI Adapter](https://github.com/gexgd0419/NaturalVoiceSAPIAdapter)
 5. **Run `BetterTTS.ahk`**
 
 ## 🎮 Basic Usage
