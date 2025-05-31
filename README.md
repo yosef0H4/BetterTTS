@@ -56,7 +56,7 @@ An AutoHotkey v2 application that combines OCR (text capture from screen) with T
 
 - **Clean Text Limitation**: The clean text feature (enabled by default) only preserves Arabic and English characters. **For other languages, disable "Clean Text" in Settings** to prevent text corruption.
 - **Arabic OCR**: Lines may appear in reverse order (known limitation)
-- **Voice Quality**: Install [Natural Voice SAPI Adapter](https://github.com/gexgd0419/NaturalVoiceSAPIAdapter) for much better voice quality
+
 
 ## 🔧 Common Issues
 
