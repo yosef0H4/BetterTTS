@@ -14,7 +14,7 @@ An AutoHotkey v2 application that combines OCR (text capture from screen) with T
 
 ## Simple Installation
 
-1. Download the latest binary from the [Releases page](LINK_TO_RELEASES_PAGE).
+1. Download the latest binary from the [Releases](../../releases).
 2. Run the executable.
 
 ## 🔧 Requirements
