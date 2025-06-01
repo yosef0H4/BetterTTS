@@ -17,7 +17,7 @@ An AutoHotkey v2 application that combines OCR (text capture from screen) with T
 1. Download the latest binary from the [Releases](../../releases).
 2. Run the executable.
 3. **Get natural voices** (optional): Windows Settings → Accessibility → Narrator → "Add natural voices" -> add them using [Natural Voice SAPI Adapter](https://github.com/gexgd0419/NaturalVoiceSAPIAdapter)
-4. 
+
 ## 🔧 Requirements
 
 - **AutoHotkey v2**
