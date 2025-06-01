@@ -8,11 +8,11 @@ An AutoHotkey v2 application that combines OCR (text capture from screen) with T
 - **Text-to-Speech**: Adjustable voice, volume, speed, and pitch controls
 - **Voice Search**: Easy voice selection with search functionality
 - **Multi-language**: Works with any installed Windows OCR language pack
-- **Enhanced Voices**: Support for high-quality natural voices (Windows 11 Narrator, Edge, Azure)
+- **Enhanced Voices**: Support for high-quality natural voices (Windows 11 Narrator, Edge)
 - **Hotkey Controls**: Complete keyboard shortcuts for all functions
 - **Bilingual Interface**: Switch between English and Arabic UI
 
-## 🔧 Simple Installation
+## 📥 Simple Installation
 
 1. Download the latest binary from the [Releases](../../releases).
 2. Run the executable.
@@ -23,7 +23,7 @@ An AutoHotkey v2 application that combines OCR (text capture from screen) with T
 - **Windows 10/11**
 - **[Descolada's OCR Library](https://github.com/Descolada/OCR/)** (required)
 - **Language packs** for desired OCR languages
-- **[Natural Voice SAPI Adapter](https://github.com/gexgd0419/NaturalVoiceSAPIAdapter)** (optional, for better voices)
+- **[Natural Voice SAPI Adapter](https://github.com/gexgd0419/NaturalVoiceSAPIAdapter)** (optional, for better voices, you can also use it download the edge voices)
 
 ## 📦 Quick Setup
 
