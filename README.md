@@ -12,6 +12,11 @@ An AutoHotkey v2 application that combines OCR (text capture from screen) with T
 - **Hotkey Controls**: Complete keyboard shortcuts for all functions
 - **Bilingual Interface**: Switch between English and Arabic UI
 
+## Simple Installation
+
+1. Download the latest binary from the [Releases page](LINK_TO_RELEASES_PAGE).
+2. Run the executable.
+
 ## 🔧 Requirements
 
 - **AutoHotkey v2**
