@@ -12,7 +12,7 @@ An AutoHotkey v2 application that combines OCR (text capture from screen) with T
 - **Hotkey Controls**: Complete keyboard shortcuts for all functions
 - **Bilingual Interface**: Switch between English and Arabic UI
 
-## 📥 Simple Installation
+## 🔧 Simple Installation
 
 1. Download the latest binary from the [Releases](../../releases).
 2. Run the executable.
@@ -35,14 +35,11 @@ An AutoHotkey v2 application that combines OCR (text capture from screen) with T
 
 ## 🎮 Basic Usage
 
-1. **Capture text**: `CapsLock + X`, then drag to select screen area
-2. **Adjust voice settings** in the GUI (voice, volume, speed, pitch)
-3. **Speak text**: `CapsLock + V` or click "Speak" button
+1. Select the text you want to speak then press `CapsLock + C`
+2. Press `CapsLock + X` To capture the area (Rectangle) release the button to capture the text (OCR)
+3. Press `CapsLock + V` to repeat the text
+4. Press `CapsLock + R` to reload the last OCR (Useful in places where text changes in the same place)
 
-### Alternative Text Input
-- `CapsLock + A` - OCR from clipboard image
-- `CapsLock + C` - Copy selected text from any app
-- Type directly in the text area
 
 ## ⌨️ Essential Hotkeys
 
@@ -53,9 +50,11 @@ An AutoHotkey v2 application that combines OCR (text capture from screen) with T
 | Pause/Resume | `CapsLock + P` |
 | Stop speaking | `CapsLock + S` |
 | Copy selected text | `CapsLock + C` |
-| OCR from clipboard | `CapsLock + A` |
+| Reloads the last OCR | `CapsLock + R` |
 | Volume up/down | `CapsLock + ↑/↓` |
 | Speed up/down | `CapsLock + →/←` |
+
+You can view help to see all the hotkeys
 
 ## ⚠️ Important Notes
 
