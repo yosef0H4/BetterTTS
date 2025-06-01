@@ -86,7 +86,7 @@ BetterTTS/
 ├── OCR.ahk               # OCR library (download separately)
 └── settings.ini          # Auto-generated settings
 ```
-psss secret You can bypass speed limt by entering the speed manually in the textbox
+- psss secret You can bypass speed limt by entering the speed manually in the textbox
 ---
 
 **Made with AutoHotkey v2** | [OCR Library](https://github.com/Descolada/OCR/) | [Natural Voice Adapter](https://github.com/gexgd0419/NaturalVoiceSAPIAdapter)
