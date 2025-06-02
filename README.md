@@ -12,11 +12,15 @@ An AutoHotkey v2 application that combines OCR (text capture from screen) with T
 - **Hotkey Controls**: Complete keyboard shortcuts for all functions
 - **Bilingual Interface**: Switch between English and Arabic UI
 
-## 📥 Simple Installation
+## 📥 Installation
 
 1. Download the latest binary from the [Releases](../../releases).
 2. Run the executable.
-3. **Get natural voices** (optional): Windows Settings → Accessibility → Narrator → "Add natural voices" -> add them using [Natural Voice SAPI Adapter](https://github.com/gexgd0419/NaturalVoiceSAPIAdapter)
+3. (Optional) For natural voices, go to Windows Settings → Accessibility → Narrator → "Add natural voices." Alternatively, you can use the [Natural Voice SAPI Adapter](https://github.com/gexgd0419/NaturalVoiceSAPIAdapter) to download Edge voices.
+4. For OCR in different languages, open the application, go to `⚙️ Settings` → `📦 Install OCR Languages`, and install the desired language packs.
+
+**Note 1**: OCR language packs should be installed by default when you install a language pack in Windows.
+**Note 2**: While the in-app installer offers a simpler solution, for more reliable installation or troubleshooting, it is recommended to use PowerShell commands as described in the [Microsoft Text Extractor documentation](https://learn.microsoft.com/en-us/windows/powertoys/text-extractor#supported-languages).
 
 ## 🔧 Requirements
 
@@ -59,17 +63,16 @@ You can view help to see all the hotkeys
 
 ## ⚠️ Important Notes
 
-- **Clean Text Limitation**: The clean text feature (enabled by default) only preserves Arabic and English characters. **For other languages, disable "Clean Text" in Settings** to prevent text corruption.
+- **Admin Privileges**: The application requires administrator privileges for installing, uninstalling, or refreshing OCR languages. Once installed and saved, it doesn't need them anymore.
 - **Arabic OCR**: Lines may appear in reverse order (known limitation)
 
 
 ## 🔧 Common Issues
 
 **No OCR languages available**
-- Install language packs via Windows Settings → Language & region
+- Ensure the desired OCR language pack is installed. You can do this through the application's `⚙️ Settings` → `📦 Install OCR Languages` menu. Alternatively, for more detailed management or troubleshooting, refer to the [Microsoft Text Extractor documentation](https://learn.microsoft.com/en-us/windows/powertoys/text-extractor#supported-languages) for PowerShell commands.
 
-**Text appears corrupted**
-- For non-English/Arabic languages: disable "Clean Text" in Settings menu
+
 
 **OCR not working**
 - Ensure clear text selection and correct language pack installed

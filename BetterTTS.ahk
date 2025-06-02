@@ -297,7 +297,7 @@ class BetterTTS {
         
         try {
             ; PowerShell command to get installed OCR capabilities
-            PSCommand := "pwsh -Command `"Get-WindowsCapability -Online | Where-Object { $_.Name -Like 'Language.OCR*' -and $_.State -eq 'Installed' } | ForEach-Object { $_.Name }`""
+            PSCommand := "powershell -Command `"Get-WindowsCapability -Online | Where-Object { $_.Name -Like 'Language.OCR*' -and $_.State -eq 'Installed' } | ForEach-Object { $_.Name }`""
             
             ; Create temporary file for output
             TempFile := A_Temp . "\InstalledOCRLanguages.txt"
@@ -513,7 +513,7 @@ class BetterTTS {
             this.cleanTextEnabled := IniRead(this.settingsFile, "Settings", "CleanText", "1")
             this.guiLanguage := IniRead(this.settingsFile, "Settings", "GUILanguage", "eng")
             this.ocrLanguage := IniRead(this.settingsFile, "Settings", "OCRLanguage", "en-US")
-            this.showOverlays := IniRead(this.settingsFile, "Settings", "ShowOverlays", "0")
+            this.showOverlays := IniRead(this.settingsFile, "Settings", "ShowOverlays", "1")
             gui.guiLanguageDropDown.Value := (this.guiLanguage = "eng") ? 1 : 2
             gui.overlayCheckbox.Value := this.showOverlays
             
@@ -797,7 +797,7 @@ class OCRLanguageInstaller {
         this.LanguageList.Delete() ; Clear existing items
         
         ; PowerShell command to get OCR capabilities
-        PSCommand := "pwsh -Command `"Get-WindowsCapability -Online | Where-Object { $_.Name -Like 'Language.OCR*' } | ForEach-Object { $_.Name + '||' + $_.State }`""
+        PSCommand := "powershell -Command `"Get-WindowsCapability -Online | Where-Object { $_.Name -Like 'Language.OCR*' } | ForEach-Object { $_.Name + '||' + $_.State }`""
         
         try {
             ; Create temporary file for output
@@ -882,7 +882,7 @@ class OCRLanguageInstaller {
         
         
         ; Create PowerShell command to install specific OCR language pack
-        PSCommand := "pwsh -Command `"$Capability = Get-WindowsCapability -Online | Where-Object { $_.Name -Like 'Language.OCR*" . LanguageCode . "*' }; if ($Capability) { $Capability | Add-WindowsCapability -Online; Write-Host 'Success: " . LanguageCode . " installed' } else { Write-Host 'Error: " . LanguageCode . " not found' }`""
+        PSCommand := "powershell -Command `"$Capability = Get-WindowsCapability -Online | Where-Object { $_.Name -Like 'Language.OCR*" . LanguageCode . "*' }; if ($Capability) { $Capability | Add-WindowsCapability -Online; Write-Host 'Success: " . LanguageCode . " installed' } else { Write-Host 'Error: " . LanguageCode . " not found' }`""
         
         try {
             ; Run the PowerShell command (already running as admin)
@@ -924,7 +924,7 @@ class OCRLanguageInstaller {
         
         
         ; Create PowerShell command to remove specific OCR language pack
-        PSCommand := "pwsh -Command `"$Capability = Get-WindowsCapability -Online | Where-Object { $_.Name -Like 'Language.OCR*" . LanguageCode . "*' }; if ($Capability) { $Capability | Remove-WindowsCapability -Online; Write-Host 'Success: " . LanguageCode . " removed' } else { Write-Host 'Error: " . LanguageCode . " not found' }`""
+        PSCommand := "powershell -Command `"$Capability = Get-WindowsCapability -Online | Where-Object { $_.Name -Like 'Language.OCR*" . LanguageCode . "*' }; if ($Capability) { $Capability | Remove-WindowsCapability -Online; Write-Host 'Success: " . LanguageCode . " removed' } else { Write-Host 'Error: " . LanguageCode . " not found' }`""
         
         try {
             ; Run the PowerShell command (already running as admin)
