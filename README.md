@@ -36,7 +36,7 @@ An AutoHotkey v2 application combining OCR (screen text capture) with Text-to-Sp
 
 **IMPORTANT WARNINGS**:
 
-> ⚠️ **Legal Gray Area**: NaturalVoiceSAPIAdapter operates by extracting encryption keys from system files and accessing voices not officially made available to third-party applications. Microsoft has not authorized this usage.
+>  **Legal Gray Area**: NaturalVoiceSAPIAdapter operates by extracting encryption keys from system files and accessing voices not officially made available to third-party applications. Microsoft has not authorized this usage.
 
 >  **Technical Risks**: 
 > - May stop working after Windows updates
