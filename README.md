@@ -2,7 +2,7 @@
 
 - **Windows 10/11**
 - **AutoHotkey v2** (for source)
-- **Language # BetterTTS
+
 
 An AutoHotkey v2 application combining OCR (screen text capture) with Text-to-Speech functionality. Features bilingual English/Arabic interface and natural voice support.
 
