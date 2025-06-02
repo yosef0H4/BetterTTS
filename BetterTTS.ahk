@@ -343,12 +343,7 @@ class BetterTTS {
     
     ; Method to refresh OCR languages (requires admin)
     static RefreshOCRLanguages(gui) {
-        if (!A_IsAdmin) {
-            MsgBox(this.GetTranslation("adminRequiredText"), 
-                   this.GetTranslation("adminRequired"), 
-                   "48")  ; Warning icon
-            return
-        }
+        this.CheckAdminAndRestart(gui)
         
         gui.DisplayText(this.GetTranslation("refreshingOCRLanguages"))
         
@@ -702,7 +697,7 @@ class BetterTTS {
     }
 
     ; Check admin privileges (for refresh button)
-    static CheckAdminAndRestart() {
+    static CheckAdminAndRestart(gui) {
         if (!A_IsAdmin) {
             ; Show admin required message
             result := MsgBox(this.GetTranslation("adminRequiredText"), 
@@ -710,12 +705,14 @@ class BetterTTS {
                            52)  ; Yes/No + Warning icon (4 + 48)
             
             if (result = "Yes") {
+                this.SaveSettings(gui)
                 try {
                     ; Restart with admin privileges
                     if A_IsCompiled
                         Run '*RunAs "' A_ScriptFullPath '"'
                     else
                         Run '*RunAs "' A_AhkPath '" "' A_ScriptFullPath '"'
+                    
                     ExitApp()
                 } catch as err {
                     MsgBox("Failed to restart with admin privileges: " err.Message, "Error", "0x10")

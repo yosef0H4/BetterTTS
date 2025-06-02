@@ -302,7 +302,7 @@ class OCRReaderGUI {
     ; New method to open the language installer
     OpenLanguageInstaller(*) {
         ; Check if running as admin, restart if needed
-        if (this.ocr.CheckAdminAndRestart()) {
+        if (this.ocr.CheckAdminAndRestart(this)) {
             ; Create and show the language installer
             try {
             installer := OCRLanguageInstaller(this.gui, this.ocr)
@@ -314,7 +314,7 @@ class OCRReaderGUI {
 
     ; New method to handle OCR language refresh with admin check
     HandleRefreshOCRLanguages(*) {
-        if (this.ocr.CheckAdminAndRestart()) {
+        if (this.ocr.CheckAdminAndRestart(this)) {
             this.ocr.RefreshOCRLanguages(this)
         }
     }
