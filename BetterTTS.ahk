@@ -508,9 +508,9 @@ class BetterTTS {
         try {
             gui.voiceDropDown.Value := IniRead(this.settingsFile, "Settings", "VoiceIndex", "1")
             gui.volumeSlider.Value := IniRead(this.settingsFile, "Settings", "Volume", "100")
-            gui.speedSlider.Value := IniRead(this.settingsFile, "Settings", "Speed", "5")
+            gui.speedSlider.Value := IniRead(this.settingsFile, "Settings", "Speed", "50")
             gui.pitchSlider.Value := IniRead(this.settingsFile, "Settings", "Pitch", "5")
-            this.cleanTextEnabled := IniRead(this.settingsFile, "Settings", "CleanText", "0")
+            this.cleanTextEnabled := IniRead(this.settingsFile, "Settings", "CleanText", "1")
             this.guiLanguage := IniRead(this.settingsFile, "Settings", "GUILanguage", "eng")
             this.ocrLanguage := IniRead(this.settingsFile, "Settings", "OCRLanguage", "en-US")
             this.showOverlays := IniRead(this.settingsFile, "Settings", "ShowOverlays", "0")
@@ -543,7 +543,7 @@ class BetterTTS {
                    "Warning", "0x30")
             gui.voiceDropDown.Value := 1
             gui.volumeSlider.Value := 100
-            gui.speedSlider.Value := 5
+            gui.speedSlider.Value := 50
             gui.pitchSlider.Value := 5
             this.cleanTextEnabled := false
             this.guiLanguage := "eng"
@@ -583,10 +583,22 @@ class BetterTTS {
     }
     
     static CleanText(text) {
-        ; Replace all non-alphanumeric characters (except spaces) with spaces
-        ; Include both English (a-zA-Z0-9) and Arabic characters (ء-ي)
-        cleaned := RegExReplace(text, "[^a-zA-Z0-9ء-ي\s]", " ")
-        ; Replace multiple spaces with a single space and trim
+        ; Define the set of characters to KEEP:
+        ; \p{L} - all Unicode letters
+        ; \p{N} - all Unicode numbers
+        ; and the following literal symbols: . , ! ? ; : ' " - _ ( ) [ ] { } @ # $ % & * + = / \ |
+        ;
+        ; The regex [^...] matches any character NOT in the specified set.
+        ; Characters needing escape in AHK regex string or for regex meaning:
+        ; "" for "
+        ; \] for ]
+        ; \\ for \
+        ; Some others like \$, \*, \+ are escaped for clarity, though often literal in [].
+        ; Hyphen - is placed at the end of the character list to be treated literally.
+        
+        keepCharsPattern := "[^\p{L}\p{N}.,!?;:'`"@$€£%&]"
+        cleaned := RegExReplace(text, keepCharsPattern, " ")
+    
         return Trim(RegExReplace(cleaned, "\s+", " "))
     }
     
