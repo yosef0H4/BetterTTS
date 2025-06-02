@@ -38,12 +38,12 @@ An AutoHotkey v2 application combining OCR (screen text capture) with Text-to-Sp
 
 > ⚠️ **Legal Gray Area**: NaturalVoiceSAPIAdapter operates by extracting encryption keys from system files and accessing voices not officially made available to third-party applications. Microsoft has not authorized this usage.
 
-> ⚠️ **Technical Risks**: 
+>  **Technical Risks**: 
 > - May stop working after Windows updates
 > - Uses unofficial methods that could be patched by Microsoft
 > - Described by its own author as "more like a hack than a proper solution"
 
-> ⚠️ **Stability**: No guarantee of continued functionality. Microsoft could block this at any time.
+>  **Stability**: No guarantee of continued functionality. Microsoft could block this at any time.
 
 **If you choose to proceed despite these risks**:
 
