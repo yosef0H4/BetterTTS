@@ -27,6 +27,8 @@ An AutoHotkey v2 application combining OCR (screen text capture) with Text-to-Sp
 1. Install [AutoHotkey v2](https://www.autohotkey.com/)
 2. Download `OCR.ahk` from [Descolada's repo](https://github.com/Descolada/OCR/)
 3. Place in same folder and run `BetterTTS.ahk`
+4. *(Optional)* For natural voices: add voices from Windows Settings then Install [NaturalVoiceSAPIAdapter](https://github.com/gexgd0419/NaturalVoiceSAPIAdapter) and follow their steps.
+5. Double click BetterTTS.ahk or build it with Ahk2Exe
 
 ## 🎙️ Enable Natural Voices (Optional)
 
