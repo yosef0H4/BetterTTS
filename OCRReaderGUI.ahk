@@ -19,6 +19,7 @@ class OCRReaderGUI {
     overlayCheckbox := unset
     ocr := unset
     voiceSearchButton := unset
+    refreshOcrLanguagesButton := unset
 
     ; GUI controls that need translation updates
     textGroupBox := unset
@@ -73,6 +74,8 @@ class OCRReaderGUI {
         settingsMenu.Add("&" this.ocr.GetTranslation("alwaysOnTop"), this.ToggleAlwaysOnTop.Bind(this))
         settingsMenu.Add("&" this.ocr.GetTranslation("cleanText"), this.ToggleCleanText.Bind(this))
         settingsMenu.Add()  ; Add a separator
+        settingsMenu.Add("&" this.ocr.GetTranslation("installOCRLanguages"), this.OpenLanguageInstaller.Bind(this))
+        settingsMenu.Add()  ; Add another separator
         settingsMenu.Add("&" this.ocr.GetTranslation("resetDefaults"), this.ResetToDefaults.Bind(this))
 
         ; Help menu
@@ -105,8 +108,12 @@ class OCRReaderGUI {
 
         ; OCR Language selection with label
         this.ocrLanguageLabel := this.gui.AddText("x280 y340 w100", this.ocr.GetTranslation("ocrLanguage"))
-        this.ocrLanguageDropDown := this.gui.AddDropDownList("x380 y338 w100 vSelectedOCRLanguage",
-            [this.ocr.GetTranslation("ocrEnglish"), this.ocr.GetTranslation("ocrArabic")])
+        this.ocrLanguageDropDown := this.gui.AddDropDownList("x380 y338 w70 vSelectedOCRLanguage")
+        ; Add the refresh OCR languages button
+        this.refreshOcrLanguagesButton := this.gui.Add("Button", "x+2 y338 w25 h25", "🔄")
+        this.refreshOcrLanguagesButton.OnEvent("Click", (*) => this.ocr.RefreshOCRLanguages(this))
+        ; Populate OCR language dropdown dynamically
+        this.ocr.UpdateOCRLanguageDropdown(this)
         this.ocrLanguageDropDown.OnEvent("Change", (*) => this.ocr.SetOCRLanguage(this))
 
         ; Voice selection with label
@@ -171,14 +178,16 @@ class OCRReaderGUI {
         this.guiLanguageDropDown.Add([this.ocr.GetTranslation("english"), this.ocr.GetTranslation("arabic")])
         this.guiLanguageDropDown.Value := (this.ocr.guiLanguage = "eng") ? 1 : 2
 
-        this.ocrLanguageDropDown.Delete()
-        this.ocrLanguageDropDown.Add([this.ocr.GetTranslation("ocrEnglish"), this.ocr.GetTranslation("ocrArabic")])
-        this.ocrLanguageDropDown.Value := (this.ocr.ocrLanguage = "en-US") ? 1 : 2
+        ; Update OCR language dropdown dynamically
+        this.ocr.UpdateOCRLanguageDropdown(this)
 
         ; Update buttons
         this.playButton.Text := this.ocr.GetTranslation("speak")
         this.pauseButton.Text := this.ocr.GetTranslation("pause")
         this.stopButton.Text := this.ocr.GetTranslation("stop")
+
+        ; Update refresh OCR languages button
+        this.refreshOcrLanguagesButton.Text := "🔄" ; Icon-based, so text remains the same
 
         ; Update overlay checkbox
         this.overlayCheckbox.Text := this.ocr.GetTranslation("showOverlays")
@@ -287,6 +296,16 @@ class OCRReaderGUI {
 
     ToggleCleanText(*) {
         this.ocr.ToggleCleanText(this)
+    }
+
+    ; New method to open the language installer
+    OpenLanguageInstaller(*) {
+        ; Check if running as admin, restart if needed
+        if (this.ocr.CheckAdminAndRestart()) {
+            ; Create and show the language installer
+            installer := OCRLanguageInstaller(this.gui, this.ocr)
+            installer.Show()
+        }
     }
 
     ShowHotkeys(*) {
