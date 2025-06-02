@@ -110,10 +110,6 @@ BetterTTS/
 
 **BetterTTS Core**: Fully safe and legal for personal and commercial use under MIT license.
 
-**Optional Dependencies**: 
-- **Descolada's OCR Library**: Open source and safe to use
-- **NaturalVoiceSAPIAdapter**: Third-party component with legal and technical risks (see warnings above)
-
 **Recommendation**: Start with the core application using standard Windows voices. Only consider enhanced voices if you understand and accept the associated risks.
 
 ## 🙏 Credits
