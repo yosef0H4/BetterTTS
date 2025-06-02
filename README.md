@@ -36,7 +36,7 @@ An AutoHotkey v2 application combining OCR (screen text capture) with Text-to-Sp
 2. **Edge voices**: NaturalVoiceSAPIAdapter can also make Edge TTS voices available
 3. **Restart BetterTTS** to see new voices in the dropdown
 
-## 📝 OCR Languages
+## 📝 OCR Languages installation
 
 - **In-app**: Settings → Install OCR Languages (requires admin)
 - **PowerShell**: See [Microsoft docs](https://learn.microsoft.com/en-us/windows/powertoys/text-extractor#supported-languages) (Recommended)
