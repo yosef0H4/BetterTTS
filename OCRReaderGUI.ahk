@@ -107,11 +107,12 @@ class OCRReaderGUI {
         this.guiLanguageDropDown.OnEvent("Change", (*) => this.ocr.SetGUILanguage(this))
 
         ; OCR Language selection with label
-        this.ocrLanguageLabel := this.gui.AddText("x280 y340 w100", this.ocr.GetTranslation("ocrLanguage"))
-        this.ocrLanguageDropDown := this.gui.AddDropDownList("x380 y338 w70 vSelectedOCRLanguage")
+        this.ocrLanguageLabel := this.gui.AddText("x280 y340", this.ocr.GetTranslation("ocrLanguage"))
+        
+        this.ocrLanguageDropDown := this.gui.AddDropDownList("x+5 y338 w90 vSelectedOCRLanguage")
         ; Add the refresh OCR languages button
         this.refreshOcrLanguagesButton := this.gui.Add("Button", "x+2 y338 w25 h25", "🔄")
-        this.refreshOcrLanguagesButton.OnEvent("Click", (*) => this.ocr.RefreshOCRLanguages(this))
+        this.refreshOcrLanguagesButton.OnEvent("Click", this.HandleRefreshOCRLanguages.Bind(this))
         ; Populate OCR language dropdown dynamically
         this.ocr.UpdateOCRLanguageDropdown(this)
         this.ocrLanguageDropDown.OnEvent("Change", (*) => this.ocr.SetOCRLanguage(this))
@@ -305,6 +306,13 @@ class OCRReaderGUI {
             ; Create and show the language installer
             installer := OCRLanguageInstaller(this.gui, this.ocr)
             installer.Show()
+        }
+    }
+
+    ; New method to handle OCR language refresh with admin check
+    HandleRefreshOCRLanguages(*) {
+        if (this.ocr.CheckAdminAndRestart()) {
+            this.ocr.RefreshOCRLanguages(this)
         }
     }
 

@@ -295,11 +295,6 @@ class BetterTTS {
         this.installedOCRLanguages["en-US"] := "🇺🇸 English (en-US)"
         this.ocrLanguageNames["en-US"] := "English"
         
-        if (!A_IsAdmin) {
-            ; If not admin, return just the default
-            return
-        }
-        
         try {
             ; PowerShell command to get installed OCR capabilities
             PSCommand := "pwsh -Command `"Get-WindowsCapability -Online | Where-Object { $_.Name -Like 'Language.OCR*' -and $_.State -eq 'Installed' } | ForEach-Object { $_.Name }`""
@@ -490,6 +485,20 @@ class BetterTTS {
             IniWrite(this.guiLanguage, this.settingsFile, "Settings", "GUILanguage")
             IniWrite(this.ocrLanguage, this.settingsFile, "Settings", "OCRLanguage")
             IniWrite(this.showOverlays, this.settingsFile, "Settings", "ShowOverlays")
+            
+            ; Save installed OCR languages
+            languageCodes := []
+            for code, name in this.installedOCRLanguages {
+                languageCodes.Push(code)
+            }
+            ; Manually join the language codes as AHK v2 Maps (arrays) do not have a .Join method
+            persistedLanguagesString := ""
+            for index, code in languageCodes {
+                persistedLanguagesString .= code
+                if (index < languageCodes.Length)
+                    persistedLanguagesString .= ","
+            }
+            IniWrite(persistedLanguagesString, this.settingsFile, "Settings", "PersistedOCRLanguages")
         } catch as err {
             MsgBox("Error saving settings: " err.Message, "Error", "0x10")
         }
@@ -508,8 +517,25 @@ class BetterTTS {
             gui.guiLanguageDropDown.Value := (this.guiLanguage = "eng") ? 1 : 2
             gui.overlayCheckbox.Value := this.showOverlays
             
+            ; Load persisted OCR languages from settings
+            persistedLanguages := IniRead(this.settingsFile, "Settings", "PersistedOCRLanguages", "en-US")
+            this.installedOCRLanguages.Clear()
+            this.ocrLanguageNames.Clear()
+            
+            ; Always include English as a fallback
+            this.installedOCRLanguages["en-US"] := "🇺🇸 English (en-US)"
+            this.ocrLanguageNames["en-US"] := "English"
+
+            for each, code in StrSplit(persistedLanguages, ",") {
+                code := Trim(code)
+                if (code = "")
+                    continue
+                FriendlyName := this.GetFriendlyLanguageName(code)
+                this.installedOCRLanguages[code] := FriendlyName
+                this.ocrLanguageNames[code] := FriendlyName
+            }
+            
             ; Load installed OCR languages and update dropdown
-            this.LoadInstalledOCRLanguages()
             this.UpdateOCRLanguageDropdown(gui)
             
         } catch as err {
@@ -526,8 +552,25 @@ class BetterTTS {
             gui.guiLanguageDropDown.Value := 1
             gui.overlayCheckbox.Value := 0
             
-            ; Load installed OCR languages and update dropdown
-            this.LoadInstalledOCRLanguages()
+            ; Load persisted OCR languages from settings
+            persistedLanguages := IniRead(this.settingsFile, "Settings", "PersistedOCRLanguages", "en-US")
+            this.installedOCRLanguages.Clear()
+            this.ocrLanguageNames.Clear()
+
+            ; Always include English as a fallback
+            this.installedOCRLanguages["en-US"] := "🇺🇸 English (en-US)"
+            this.ocrLanguageNames["en-US"] := "English"
+
+            for each, code in StrSplit(persistedLanguages, ",") {
+                code := Trim(code)
+                if (code = "")
+                    continue
+                FriendlyName := this.GetFriendlyLanguageName(code)
+                this.installedOCRLanguages[code] := FriendlyName
+                this.ocrLanguageNames[code] := FriendlyName
+            }
+
+            ; Update dropdown even on error
             this.UpdateOCRLanguageDropdown(gui)
         }
     }
@@ -904,9 +947,6 @@ class OCRLanguageInstaller {
         this.MyGui.Destroy()
     }
 }
-
-; Initialize installed OCR languages at startup
-BetterTTS.LoadInstalledOCRLanguages()
 
 ; Create and initialize the application
 app := OCRReaderGUI(BetterTTS)
