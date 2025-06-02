@@ -14,6 +14,7 @@ An AutoHotkey v2 application combining OCR (screen text capture) with Text-to-Sp
 - **Multi-language**: Works with any Windows OCR language pack
 - **Hotkey Controls**: Complete keyboard shortcuts
 - **Bilingual UI**: English/Arabic interface switching
+- **Runs locally**: It doesn't need any online connection Outside of installing ocr packs
 
 ## 📥 Quick Setup
 
