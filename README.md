@@ -56,7 +56,6 @@ An AutoHotkey v2 application combining OCR (screen text capture) with Text-to-Sp
 **Safer alternatives**:
 - Use built-in Windows SAPI voices (included with Windows)
 - Purchase commercial TTS solutions
-- Use cloud-based TTS APIs for applications requiring high-quality voices
 
 ## 📝 OCR Languages Installation
 
