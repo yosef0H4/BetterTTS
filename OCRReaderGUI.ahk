@@ -304,8 +304,11 @@ class OCRReaderGUI {
         ; Check if running as admin, restart if needed
         if (this.ocr.CheckAdminAndRestart()) {
             ; Create and show the language installer
+            try {
             installer := OCRLanguageInstaller(this.gui, this.ocr)
             installer.Show()
+            }
+            
         }
     }
 

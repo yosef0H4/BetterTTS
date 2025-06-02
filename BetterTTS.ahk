@@ -793,9 +793,7 @@ class OCRLanguageInstaller {
     ; Load available OCR languages
     LoadLanguages(*) {
         this.StatusText.Text := this.OCRClass.GetTranslation("loadingLanguages")
-        this.RefreshBtn.Enabled := false
-        this.InstallBtn.Enabled := false
-        this.RemoveBtn.Enabled := false
+        
         this.LanguageList.Delete() ; Clear existing items
         
         ; PowerShell command to get OCR capabilities
@@ -857,9 +855,7 @@ class OCRLanguageInstaller {
             this.StatusText.Text := this.OCRClass.GetTranslation("errorLoadingLanguages") . err.Message
         }
         
-        this.RefreshBtn.Enabled := true
-        this.InstallBtn.Enabled := true
-        this.RemoveBtn.Enabled := true
+        
     }
     
     ; Install selected language
@@ -883,9 +879,7 @@ class OCRLanguageInstaller {
         
         ; Update status
         this.StatusText.Text := this.OCRClass.GetTranslation("installing") . LanguageCode . "..."
-        this.InstallBtn.Enabled := false
-        this.RefreshBtn.Enabled := false
-        this.RemoveBtn.Enabled := false
+        
         
         ; Create PowerShell command to install specific OCR language pack
         PSCommand := "pwsh -Command `"$Capability = Get-WindowsCapability -Online | Where-Object { $_.Name -Like 'Language.OCR*" . LanguageCode . "*' }; if ($Capability) { $Capability | Add-WindowsCapability -Online; Write-Host 'Success: " . LanguageCode . " installed' } else { Write-Host 'Error: " . LanguageCode . " not found' }`""
@@ -899,13 +893,11 @@ class OCRLanguageInstaller {
             this.LoadLanguages()
         }
         catch Error as err {
-            this.StatusText.Text := this.OCRClass.GetTranslation("errorInstalling") . LanguageCode . ". " . err.Message
+            MsgBox(this.OCRClass.GetTranslation("errorInstalling") . LanguageCode . ". " . err.Message)
         }
         
-        ; Re-enable buttons
-        this.InstallBtn.Enabled := true
-        this.RefreshBtn.Enabled := true
-        this.RemoveBtn.Enabled := true
+        
+        
     }
     
     ; Remove selected language
@@ -929,9 +921,7 @@ class OCRLanguageInstaller {
         
         ; Update status
         this.StatusText.Text := this.OCRClass.GetTranslation("removing") . LanguageCode . "..."
-        this.InstallBtn.Enabled := false
-        this.RefreshBtn.Enabled := false
-        this.RemoveBtn.Enabled := false
+        
         
         ; Create PowerShell command to remove specific OCR language pack
         PSCommand := "pwsh -Command `"$Capability = Get-WindowsCapability -Online | Where-Object { $_.Name -Like 'Language.OCR*" . LanguageCode . "*' }; if ($Capability) { $Capability | Remove-WindowsCapability -Online; Write-Host 'Success: " . LanguageCode . " removed' } else { Write-Host 'Error: " . LanguageCode . " not found' }`""
@@ -945,13 +935,10 @@ class OCRLanguageInstaller {
             this.LoadLanguages()
         }
         catch Error as err {
-            this.StatusText.Text := this.OCRClass.GetTranslation("errorRemoving") . LanguageCode . ". " . err.Message
+            MsgBox this.OCRClass.GetTranslation("errorRemoving") . LanguageCode . ". " . err.Message
         }
         
-        ; Re-enable buttons
-        this.InstallBtn.Enabled := true
-        this.RefreshBtn.Enabled := true
-        this.RemoveBtn.Enabled := true
+        
     }
     
     ; Close the installer
