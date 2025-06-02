@@ -105,7 +105,7 @@ class BetterTTS {
             "speedUpDesc", "⚡ Increase speed",
             "speedDownDesc", "🐌 Decrease speed",
             "aboutTitle", "ℹ️ About Better TTS",
-            "aboutText", "✨ Better TTS`nVersion v0.3`n`nCreated with AutoHotkey v2",
+            "aboutText", "✨ Better TTS`nVersion v1.0`n`nCreated with AutoHotkey v2",
             "hotkeyColumn", "⌨️ Hotkey",
             "descriptionColumn", "📝 Description",
             "ok", "✅ OK",
@@ -226,7 +226,7 @@ class BetterTTS {
             "speedUpDesc", "⚡ زيادة سرعة القراءة",
             "speedDownDesc", "🐌 تقليل سرعة القراءة",
             "aboutTitle", "ℹ️ حول قارئ النصوص",
-            "aboutText", "✨ قارئ النصوص`nالإصدار v0.3`n`nتم إنشاؤه باستخدام AutoHotkey v2",
+            "aboutText", "✨ قارئ النصوص`nالإصدار v1.0`n`nتم إنشاؤه باستخدام AutoHotkey v2",
             "hotkeyColumn", "⌨️ مفتاح الاختصار",
             "descriptionColumn", "📝 الوصف",
             "ok", "✅ موافق",

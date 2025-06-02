@@ -1,96 +1,103 @@
-# BetterTTS
+## 💻 Requirements
 
-An AutoHotkey v2 application that combines OCR (text capture from screen) with Text-to-Speech functionality. Supports multiple languages with bilingual English/Arabic interface.
-
-## ✨ Key Features
-
-- **Screen OCR**: Capture text from any screen area (`CapsLock + X`)
-- **Text-to-Speech**: Adjustable voice, volume, speed, and pitch controls
-- **Voice Search**: Easy voice selection with search functionality
-- **Multi-language**: Works with any installed Windows OCR language pack
-- **Enhanced Voices**: Support for high-quality natural voices (Windows 11 Narrator, Edge)
-- **Hotkey Controls**: Complete keyboard shortcuts for all functions
-- **Bilingual Interface**: Switch between English and Arabic UI
-
-## 📥 Installation
-
-1. Download the latest binary from the [Releases](../../releases).
-2. Run the executable.
-3. (Optional) For natural voices, go to Windows Settings → Accessibility → Narrator → "Add natural voices." Alternatively, you can use the [Natural Voice SAPI Adapter](https://github.com/gexgd0419/NaturalVoiceSAPIAdapter) to download Edge voices.
-4. For OCR in different languages, open the application, go to `⚙️ Settings` → `📦 Install OCR Languages`, and install the desired language packs.
-
-**Note 1**: OCR language packs should be installed by default when you install a language pack in Windows.
-**Note 2**: While the in-app installer offers a simpler solution, for more reliable installation or troubleshooting, it is recommended to use PowerShell commands as described in the [Microsoft Text Extractor documentation](https://learn.microsoft.com/en-us/windows/powertoys/text-extractor#supported-languages).
-
-## 🔧 Requirements
-
-- **AutoHotkey v2**
 - **Windows 10/11**
-- **[Descolada's OCR Library](https://github.com/Descolada/OCR/)** (required)
-- **Language packs** for desired OCR languages
-- **[Natural Voice SAPI Adapter](https://github.com/gexgd0419/NaturalVoiceSAPIAdapter)** (optional, for better voices, you can also use it download the edge voices)
+- **AutoHotkey v2** (for source)
+- **Language # BetterTTS
 
-## 📦 Quick Setup
+An AutoHotkey v2 application combining OCR (screen text capture) with Text-to-Speech functionality. Features bilingual English/Arabic interface and natural voice support.
 
-1. **Install AutoHotkey v2** from [autohotkey.com](https://www.autohotkey.com/)
-2. **Download this project** and place `OCR.ahk` from [Descolada's repo](https://github.com/Descolada/OCR/) in the same folder
-3. **Add OCR languages**: Windows Settings → Time & Language → Language & region → Add language (with OCR feature)
-4. **Get natural voices** (optional): Windows Settings → Accessibility → Narrator → "Add natural voices" -> add them using [Natural Voice SAPI Adapter](https://github.com/gexgd0419/NaturalVoiceSAPIAdapter)
-5. **Run `BetterTTS.ahk`**
+## ✨ Features
 
-## 🎮 Basic Usage
+- **Screen OCR**: Capture text from any area (`CapsLock + X`)
+- **Natural TTS**: High-quality voices with full control (requires [NaturalVoiceSAPIAdapter](https://github.com/gexgd0419/NaturalVoiceSAPIAdapter))
+- **Voice Search**: Easy voice selection with search
+- **Multi-language**: Works with any Windows OCR language pack
+- **Hotkey Controls**: Complete keyboard shortcuts
+- **Bilingual UI**: English/Arabic interface switching
 
-1. Select the text you want to speak then press `CapsLock + C`
-2. Press `CapsLock + X` To capture the area (Rectangle) release the button to capture the text (OCR)
-3. Press `CapsLock + V` to repeat the text
-4. Press `CapsLock + R` to reload the last OCR (Useful in places where text changes in the same place)
+## 📥 Quick Setup
 
+### Binary Installation (Recommended for People with no coding experience)
+1. Download latest `.exe` from [Releases](../../releases)
+2. Run executable
+3. *(Optional)* For natural voices: add voices from Windows Settings then Install [NaturalVoiceSAPIAdapter](https://github.com/gexgd0419/NaturalVoiceSAPIAdapter) and follow their steps.
+
+### Source Installation (More recommended but requires coding knowledge)
+1. Install [AutoHotkey v2](https://www.autohotkey.com/)
+2. Download `OCR.ahk` from [Descolada's repo](https://github.com/Descolada/OCR/)
+3. Place in same folder and run `BetterTTS.ahk`
+
+## 🎙️ Enable Natural Voices (Optional)
+
+**Required**: Install [NaturalVoiceSAPIAdapter](https://github.com/gexgd0419/NaturalVoiceSAPIAdapter) first
+
+**Then add voices**:
+1. **Windows 11**: Settings → Accessibility → Narrator → "Add natural voices"
+2. **Edge voices**: NaturalVoiceSAPIAdapter can also make Edge TTS voices available
+3. **Restart BetterTTS** to see new voices in the dropdown
+
+## 📝 OCR Languages
+
+- **In-app**: Settings → Install OCR Languages (requires admin)
+- **PowerShell**: See [Microsoft docs](https://learn.microsoft.com/en-us/windows/powertoys/text-extractor#supported-languages) (Recommended)
 
 ## ⌨️ Essential Hotkeys
 
-| Function | Hotkey |
-|----------|--------|
-| Capture screen text | `CapsLock + X` |
-| Speak text | `CapsLock + V` |
-| Pause/Resume | `CapsLock + P` |
-| Stop speaking | `CapsLock + S` |
-| Copy selected text | `CapsLock + C` |
-| Reloads the last OCR | `CapsLock + R` |
-| Volume up/down | `CapsLock + ↑/↓` |
-| Speed up/down | `CapsLock + →/←` |
+| Function | Hotkey | Description |
+|----------|--------|-------------|
+| **Capture text** | `CapsLock + X` | Click-drag to OCR area |
+| **Copy selection** | `CapsLock + C` | OCR selected text |
+| **Speak text** | `CapsLock + V` | Start speech |
+| **Pause/Resume** | `CapsLock + P` | Toggle playback |
+| **Stop** | `CapsLock + S` | Stop speech |
+| **Refresh OCR** | `CapsLock + R` | Re-OCR same area |
+| **Volume** | `CapsLock + ↑/↓` | Adjust volume |
+| **Speed** | `CapsLock + →/←` | Adjust speed |
 
-You can view help to see all the hotkeys
+> View all hotkeys in Help menu
 
-## ⚠️ Important Notes
+## 🎮 Quick Start
 
-- **Admin Privileges**: The application requires administrator privileges for installing, uninstalling, or refreshing OCR languages. Once installed and saved, it doesn't need them anymore.
-- **Arabic OCR**: Lines may appear in reverse order (known limitation)
+1. Press `CapsLock + X` and drag to select text area
+2. Text appears in the interface
+3. Press `CapsLock + V` to hear it spoken
+4. Use `CapsLock + C` for already selected text
 
+## 🔧 Troubleshooting
 
-## 🔧 Common Issues
+**OCR not working**: Install language packs via Settings → Install OCR Languages  
+**No natural voices**: Install [NaturalVoiceSAPIAdapter](https://github.com/gexgd0419/NaturalVoiceSAPIAdapter), then add voices from Windows Settings  
+**Admin required**: Only needed for language pack management  
+**Arabic text reversed**: Known limitation, lines may appear in reverse order
 
-**No OCR languages available**
-- Ensure the desired OCR language pack is installed. You can do this through the application's `⚙️ Settings` → `📦 Install OCR Languages` menu. Alternatively, for more detailed management or troubleshooting, refer to the [Microsoft Text Extractor documentation](https://learn.microsoft.com/en-us/windows/powertoys/text-extractor#supported-languages) for PowerShell commands.
+> **Note**: NaturalVoiceSAPIAdapter is required to make Windows natural voices and Edge voices available in the app
 
+## 💻 Requirements
 
+- **Windows 10/11**
+- **AutoHotkey v2** (for source)
+- **Language packs** for desired OCR languages
 
-**OCR not working**
-- Ensure clear text selection and correct language pack installed
-
-## 📁 Project Files
+## 📁 Project Structure
 
 ```
 BetterTTS/
 ├── BetterTTS.ahk          # Main application
 ├── OCRReaderGUI.ahk       # User interface
-├── SpeechHandler.ahk      # Text-to-speech
-├── VoiceSearchGUI.ahk     # Voice selection
-├── RectangleCreator.ahk   # Screen selection
-├── Highlighter.ahk        # Visual highlighting
+├── SpeechHandler.ahk      # Text-to-speech engine
+├── VoiceSearchGUI.ahk     # Voice selection dialog
+├── RectangleCreator.ahk   # Screen selection tool
+├── Highlighter.ahk        # Visual feedback
 ├── OCR.ahk               # OCR library (download separately)
 └── settings.ini          # Auto-generated settings
 ```
-- psss secret You can bypass speed limt by entering the speed manually in the textbox
+
+## 🙏 Credits
+
+- **[Descolada](https://github.com/Descolada/OCR/)** - OCR Library for AutoHotkey v2
+- **[gexgd0419](https://github.com/gexgd0419/NaturalVoiceSAPIAdapter)** - NaturalVoiceSAPIAdapter (essential for natural voices)
+- **AutoHotkey Community** - For the scripting language
+
 ---
 
-**Made with AutoHotkey v2** | [OCR Library](https://github.com/Descolada/OCR/) | [Natural Voice Adapter](https://github.com/gexgd0419/NaturalVoiceSAPIAdapter)
+**Version:** v1.0 | **License:** MIT | **Made with AutoHotkey v2**
